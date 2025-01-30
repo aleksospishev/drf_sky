@@ -45,7 +45,9 @@ class Lesson(models.Model):
         blank=True,
         null=True,
     )
-    course = models.ForeignKey(Course, on_delete=models.PROTECT, related_name="Course")
+    course = models.ForeignKey(
+        Course, on_delete=models.PROTECT, related_name="lesson_set"
+    )
 
     class Meta:
         verbose_name = "Урок"
