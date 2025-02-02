@@ -6,7 +6,7 @@ from materials.models import Course, Lesson
 
 # Create your models here.
 class User(AbstractUser):
-    Username = None
+    username = None
 
     email = models.EmailField(
         max_length=25, unique=True, verbose_name="Почта", help_text="Укажите почту"
