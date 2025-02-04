@@ -1,0 +1,26 @@
+[
+{
+    "model": "users.payments",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "course": null,
+        "lessons": 1,
+        "payment_amount": 15,
+        "date_paymate": "2025-01-30",
+        "form_of_paymate": "Cash"
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 2,
+    "fields": {
+        "user": 1,
+        "course": 1,
+        "lessons": null,
+        "payment_amount": 100,
+        "date_paymate": "2025-01-30",
+        "form_of_paymate": "Cash"
+    }
+}
+]
