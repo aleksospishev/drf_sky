@@ -60,5 +60,49 @@
         "groups": [],
         "user_permissions": []
     }
+},
+{
+    "model": "users.user",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$klFfFqti0yz9EuqyrufhYS$7IID4eZnyJj0+cm0tL2/KqsIVwhQF+2XAtcPkjpm0Aw=",
+        "last_login": null,
+        "is_superuser": false,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-02-04T22:57:26.255Z",
+        "email": "testy@test.com",
+        "phone": null,
+        "city": null,
+        "avatar": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "course": null,
+        "lessons": 1,
+        "payment_amount": 15,
+        "date_paymate": "2025-01-30",
+        "form_of_paymate": "Cash"
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 2,
+    "fields": {
+        "user": 1,
+        "course": 1,
+        "lessons": null,
+        "payment_amount": 100,
+        "date_paymate": "2025-01-30",
+        "form_of_paymate": "Cash"
+    }
 }
 ]
