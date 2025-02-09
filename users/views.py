@@ -24,5 +24,5 @@ class PaymentsViewSet(ModelViewSet):
     serializer_class = PaymentSerializer
     queryset = Payments.objects.all()
     filter_backends = [DjangoFilterBackend, OrderingFilter]
-    filterset_fields = ["course", "lesson", "form_of_paymate"]
+    filterset_fields = ["course", "form_of_paymate"]
     orderind_fields = ["payment_date"]
