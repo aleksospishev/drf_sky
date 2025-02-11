@@ -8,5 +8,7 @@ PORT = port_your_db
 
 DEBUG = True
 
+STRIPE_API_KEY = your_api_key_stripe
+
 E_MAIL = your_email_service
 PASS_MAIL=your_password_email_service
