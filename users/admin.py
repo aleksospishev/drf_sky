@@ -8,7 +8,13 @@ from .models import Payments, User
 class Useradmin(admin.ModelAdmin):
     """Модель администрирования пользователей."""
 
-    list_display = ("email", "avatar", "city", "phone")
+    list_display = (
+        "email",
+        "avatar",
+        "city",
+        "phone",
+        "is_active",
+    )
     list_filter = ("email",)
     search_fields = ("email", "phone")
 
