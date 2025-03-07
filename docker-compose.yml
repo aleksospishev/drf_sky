@@ -4,11 +4,9 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: drf_app
-    command: >
-      sh -c "python manage.py migrate &&
-             python manage.py collectstatic --noinput && gunicorn drf_sky.wsgi:application --bind 0.0.0.0:8000"
-    expose:
-      - "8000"
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
     env_file:
       - .env
     volumes:
@@ -17,17 +15,6 @@ services:
     depends_on:
       - db
       - redis
-
-  nginx:
-    build:
-      context: ./nginx
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - static_volume:/app/staticfiles
-    depends_on:
-      - web
 
   celery:
     build:
@@ -62,6 +49,8 @@ services:
     container_name: postgres_db
     env_file:
       - ./.env
+    expose:
+      - "5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
