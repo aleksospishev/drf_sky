@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "users",
     "rest_framework_simplejwt",
     "django_filters",
+    "django_celery_beat",
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,21 @@ SIMPLE_JWT = {
 }
 
 STRIPE_API_KEY = os.getenv("STRIPE_API_KEY")
+
+CELERY_BROKER_URL = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "redis://localhost:6379"
+CELERY_TIMEZONE = TIME_ZONE
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+CELERY_BEAT_SCHEDULE = {
+    "user_block": {
+        "task": "users.tasks.disactive_user",
+        "schedule": timedelta(minutes=10),
+    },
+}
+EMAIL_HOST = "smtp.yandex.ru"
+EMAIL_PORT = 465
+EMAIL_HOST_USER = os.getenv("E_MAIL")
+EMAIL_HOST_PASSWORD = os.getenv("PASS_MAIL")
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
