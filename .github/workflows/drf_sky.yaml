@@ -49,14 +49,12 @@ jobs:
       - tests
       - build_and_push_to_docker_hub_backend
     steps:
-      - name: executing remote ssh commands to deploy
-        uses: appleboy/ssh-action@master
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.8.1
         with:
-          HOST: ${{ secrets.HOST }}
-          USERNAME: ${{ secrets.USERNAME }}
-          KEY: ${{ secrets.SSH_KEY }}
-          PASSPHRASE: ${{ secrets.PASSPHRASE }}
-          script: |
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+      - name: create .env
+        run: |
             touch .env
             echo SECRET_KEY =${{ secrets.SECRET_KEY }} >> .env
             echo POSTGRES_DB=${{ secrets.POSTGRES_DB }} >> .env
@@ -67,9 +65,11 @@ jobs:
             echo STRIPE_API_KEY =${{ secrets.STRIPE_API_KEY }} >> .env
             echo E_MAIL =${{ secrets.EMAIL }} >> .env
             echo PASS_MAIL =${{ secrets.PASS_MAIL}} >>§ .env
-            docker-compose stop
-            docker-compose rm web
-            docker pull ${{secrets.DOCKER_USERNAME}}/drf_sky
-            docker-compose up -d
-            docker-compose exec -t web python manage.py migrate
-            docker-compose exec -t web python manage.py collectstatic --no-inputs
+      - name: Deploy to Server
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
+            docker pull ${{ secrets.DOCKER_USERNAME }}/drf_sky:latest
+            docker stop web || true
+            docker rm web || true
+            docker run -d --name web -p 80:8000 ${{ secrets.USERNAME }}/drf_sky:latest
+          EOF
