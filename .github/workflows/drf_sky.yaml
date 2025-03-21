@@ -60,18 +60,17 @@ jobs:
             echo STRIPE_API_KEY =${{ secrets.STRIPE_API_KEY }} >> .env
             echo E_MAIL =${{ secrets.EMAIL }} >> .env
             echo PASS_MAIL =${{ secrets.PASS_MAIL}} >>§ .env
+      
+
+
+      - name: Set up SSH
+        run: |
+          eval $(ssh-agent -s)
+          echo "${{ secrets.SSH_KEY }}" | tr -d '\r' | ssh-add - <<< "${{ secrets.PASSPHRASE }}"
       - name: Check SSH key
         run: |
           echo "Testing SSH key..."
           ssh-add -l
-
-
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_KEY }}
-          ssh-passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
-
       - name: Deploy to Server
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
