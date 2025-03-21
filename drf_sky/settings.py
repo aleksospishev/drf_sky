@@ -13,7 +13,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", default="None")
 
 DEBUG = True if os.getenv("DEBUG") == "True" else False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     "rest_framework",
@@ -65,11 +65,11 @@ WSGI_APPLICATION = "drf_sky.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": os.getenv("NAME"),
-        "USER": os.getenv("USER_BD"),
-        "PASSWORD": os.getenv("PASS_BD"),
+        "NAME": os.getenv("POSTGRES_DB"),
+        "USER": os.getenv("POSTGRES_USER"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
         "PORT": os.getenv("PORT"),
-        "HOST": os.getenv("HOST"),
+        "HOST": os.getenv("POSTGRES_HOST"),
     }
 }
 
