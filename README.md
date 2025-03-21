@@ -2,7 +2,7 @@
 
 ** клонироват репозиторий с GitHub:**
 
-git@github.com:
+git@github.com:aleksospishev/drf_sky.git
 Установить на сервере Docker, Docker Compose:
 
 sudo apt install curl                                   - установка утилиты для скачивания файлов
