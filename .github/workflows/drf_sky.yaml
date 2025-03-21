@@ -70,7 +70,6 @@ jobs:
             echo PASS_MAIL =${{ secrets.PASS_MAIL}} >>§ .env
             sudo docker-compose stop
             sudo docker-compose rm web
-            sudo docker-compose rm frontend
             sudo docker pull ${{secrets.DOCKER_USERNAME}}/drf_sky
             sudo docker pull ${{secrets.DOCKER_USERNAME}}/drf_
             sudo docker-compose up -d
