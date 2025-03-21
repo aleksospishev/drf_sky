@@ -61,10 +61,10 @@ jobs:
             echo E_MAIL =${{ secrets.EMAIL }} >> .env
             echo PASS_MAIL =${{ secrets.PASS_MAIL}} >>§ .env
 
-      - name: Set up SSH
-        run: |
-          eval $(ssh-agent -s)
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' | ssh-add -
+      - name: Set up SSH key
+        uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Deploy to Server
         run: |
