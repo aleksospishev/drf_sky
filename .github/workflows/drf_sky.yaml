@@ -73,3 +73,4 @@ jobs:
             docker rm web || true
             docker run -d --name web -p 80:8000 ${{ secrets.USERNAME }}/drf_sky:latest
           EOF
+
