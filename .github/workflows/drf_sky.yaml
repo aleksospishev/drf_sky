@@ -60,8 +60,6 @@ jobs:
             echo STRIPE_API_KEY =${{ secrets.STRIPE_API_KEY }} >> .env
             echo E_MAIL =${{ secrets.EMAIL }} >> .env
             echo PASS_MAIL =${{ secrets.PASS_MAIL}} >>§ .env
-      
-
 
       - name: Set up SSH
         run: |
