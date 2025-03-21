@@ -10,9 +10,7 @@ curl -fsSL https://get.docker.com -o get-docker.sh      - скачать скр�
 sh get-docker.sh                                        - запуск скрипта
 sudo apt-get install docker-compose-plugin              - последняя версия docker compose
 
-Скопировать на сервер файлы docker-compose.yml, nginx.conf из папки infra (команды выполнять находясь в папке infra):
 
-scp docker-compose.yml nginx.conf username@IP:~/foodgram/infra
 
 # username - имя пользователя на сервере
 # IP - публичный IP сервера
