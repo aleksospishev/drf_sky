@@ -67,9 +67,9 @@ jobs:
             echo STRIPE_API_KEY =${{ secrets.STRIPE_API_KEY }} >> .env
             echo E_MAIL =${{ secrets.EMAIL }} >> .env
             echo PASS_MAIL =${{ secrets.PASS_MAIL}} >>§ .env
-            sudo docker-compose stop
-            sudo docker-compose rm web
-            sudo docker pull ${{secrets.DOCKER_USERNAME}}/drf_sky
-            sudo docker-compose up -d
-            sudo docker-compose exec -t web python manage.py migrate
-            sudo docker-compose exec -t web python manage.py collectstatic --no-inputs
+            docker-compose stop
+            docker-compose rm web
+            docker pull ${{secrets.DOCKER_USERNAME}}/drf_sky
+            docker-compose up -d
+            docker-compose exec -t web python manage.py migrate
+            docker-compose exec -t web python manage.py collectstatic --no-inputs
