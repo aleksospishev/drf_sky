@@ -2,7 +2,7 @@ import os
 
 from celery import Celery
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "drf_sky.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "drf_sky.yaml.settings")
 
 app = Celery("config")
 

@@ -1,6 +1,8 @@
 import os
 from datetime import timedelta
 from pathlib import Path
+import sys
+
 
 from dotenv import load_dotenv
 
@@ -41,7 +43,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "drf_sky.urls"
+ROOT_URLCONF = "drf_sky.yaml.urls"
 
 TEMPLATES = [
     {
@@ -59,7 +61,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "drf_sky.wsgi.application"
+WSGI_APPLICATION = "drf_sky.yaml.wsgi.application"
 
 
 DATABASES = {
@@ -147,3 +149,13 @@ EMAIL_HOST_USER = os.getenv("E_MAIL")
 EMAIL_HOST_PASSWORD = os.getenv("PASS_MAIL")
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
+
+
+
+if "test" in sys.argv:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "test_db.sqlite3",
+        }
+    }

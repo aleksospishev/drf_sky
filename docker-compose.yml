@@ -16,13 +16,24 @@ services:
       - db
       - redis
 
+  nginx:
+    build:
+      context: ./nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - static_volume:/app/staticfiles
+    depends_on:
+      - web
+
   celery:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: celery_worker
     command: >
-      sh -c "celery -A config worker --loglevel=info"
+      sh -c "celery -A drf_app worker --loglevel=info"
     env_file:
       - .env
     volumes:
