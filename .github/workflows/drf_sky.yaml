@@ -66,7 +66,7 @@ jobs:
       - name: Set up SSH
         run: |
           eval $(ssh-agent -s)
-          echo "${{ secrets.SSH_KEY }}" | tr -d '\r' | ssh-add -
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' | ssh-add -
       - name: Check SSH key
         run: |
           echo "Testing SSH key..."
