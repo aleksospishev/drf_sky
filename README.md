@@ -10,10 +10,14 @@ curl -fsSL https://get.docker.com -o get-docker.sh      - скачать скр�
 sh get-docker.sh                                        - запуск скрипта
 sudo apt-get install docker-compose-plugin              - последняя версия docker compose
 
-
+**_Скопировать на сервер файлы docker-compose.yml, nginx.conf из папки infra (команды выполнять находясь в папке infra):_**
+```
+scp docker-compose.yml nginx.conf username@IP:~/foodgram/infra
 
 # username - имя пользователя на сервере
 # IP - публичный IP сервера
+```
+
 Для работы с GitHub Actions необходимо в репозитории в разделе Secrets > Actions создать переменные окружения:
 
 SECRET_KEY              - секретный ключ Django проекта
