@@ -71,7 +71,6 @@ jobs:
             sudo docker-compose stop
             sudo docker-compose rm web
             sudo docker pull ${{secrets.DOCKER_USERNAME}}/drf_sky
-            sudo docker pull ${{secrets.DOCKER_USERNAME}}/drf_
             sudo docker-compose up -d
             sudo docker-compose exec -t web python manage.py migrate
             sudo docker-compose exec -t web python manage.py collectstatic --no-inputs
