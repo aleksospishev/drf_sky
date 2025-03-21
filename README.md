@@ -56,7 +56,4 @@ sudo docker-compose exec web python manage.py createsuperuser
 sudo docker-compose down -v      - с их удалением
 sudo docker-compose stop         - без удаления
 данные для входа в админ:
-
-exam@admin.ru    -email
-1234             -password
 # drf_sky
