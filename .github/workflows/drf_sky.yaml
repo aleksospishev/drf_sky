@@ -49,10 +49,12 @@ jobs:
       - tests
       - build_and_push_to_docker_hub_backend
     steps:
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.8.1
-        with:
-          ssh-private-key: ${{ secrets.SSH_KEY }}
+      - steps:
+        - name: Set up SSH
+          uses: webfactory/ssh-agent@v0.8.1
+          with:
+            ssh-private-key: ${{ secrets.SSH_KEY }}
+
       - name: create .env
         run: |
             touch .env
