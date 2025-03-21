@@ -43,7 +43,6 @@ jobs:
         with:
           with:
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/drf_sky:latest
 
   deploy:
     runs-on: ubuntu-latest
