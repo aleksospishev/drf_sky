@@ -60,7 +60,7 @@ class Payments(models.Model):
         blank=True,
         null=True,
     )
-    payment_amount = models.IntegerField(verbose_name="сумма платежа" )
+    payment_amount = models.IntegerField(verbose_name="сумма платежа")
     date_paymate = models.DateField(verbose_name="дата платежа", auto_now=True)
     form_of_paymate = models.CharField(
         choices=CHOISES, default=CHOISES["Cash"], verbose_name="Способ оплаты"
