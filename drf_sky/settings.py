@@ -43,7 +43,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "drf_sky.yaml.urls"
+ROOT_URLCONF = "drf_sky.urls"
 
 TEMPLATES = [
     {
@@ -61,7 +61,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "drf_sky.yaml.wsgi.application"
+WSGI_APPLICATION = "drf_sky.wsgi.application"
 
 
 DATABASES = {
