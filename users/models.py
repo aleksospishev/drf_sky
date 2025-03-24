@@ -42,7 +42,11 @@ class User(AbstractUser):
 
 
 class Payments(models.Model):
-    CHOISES = {"Cash": "Наличные", "Card": "банковский перевод"}
+    CHOICES = [
+        ("Cash", "Наличные"),
+        ("Card", "Банковский перевод"),
+    ]
+
     user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name="user")
     course = models.ForeignKey(
         Course,
@@ -63,7 +67,10 @@ class Payments(models.Model):
     payment_amount = models.IntegerField(verbose_name="сумма платежа")
     date_paymate = models.DateField(verbose_name="дата платежа", auto_now=True)
     form_of_paymate = models.CharField(
-        choices=CHOISES, default=CHOISES["Cash"], verbose_name="Способ оплаты"
+        max_length=20,
+        choices=CHOICES,
+        default="Cash",
+        verbose_name="Способ оплаты"
     )
 
     class Meta:
