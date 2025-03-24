@@ -39,6 +39,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirement.txt
 
+      - name: create bd
+        run: touch test_db.sqlite3
+
       - name: Run tests
         run: python manage.py test
 
