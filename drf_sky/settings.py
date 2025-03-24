@@ -153,9 +153,10 @@ EMAIL_USE_SSL = True
 
 
 if "test" in sys.argv:
+    print("Args:", sys.argv)
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
-            "NAME": str(BASE_DIR / "test_db.sqlite3"),
+            "NAME": BASE_DIR / "test_db.sqlite3",
         }
     }
