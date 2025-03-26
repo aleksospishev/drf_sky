@@ -1,5 +1,5 @@
 """
-WSGI config for drf_sky project.
+WSGI config for ci.yaml project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
