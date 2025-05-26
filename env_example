@@ -1,12 +1,14 @@
 SECRET_KEY = your_secret_key_django
 
-NAME = your_name_db
-USER_BD = your_user_db
-PASS_BD = password_your_user_db
-HOST = host_your_db
+POSTGRES_DB = your_name_db
+POSTGRES_USER = your_user_db
+POSTGRES_PASSWORD = password_your_user_db
+POSTGRES_HOST = host_your_db
 PORT = port_your_db
 
 DEBUG = True
+
+STRIPE_API_KEY = your_api_key_stripe
 
 E_MAIL = your_email_service
 PASS_MAIL=your_password_email_service
